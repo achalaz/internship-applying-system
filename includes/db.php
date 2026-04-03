@@ -1,18 +1,11 @@
 <?php
-// includes/db.php
+$servername = "sqlXXX.infinityfree.com"; // your host
+$username = "your_db_username";          // from InfinityFree
+$password = "your_db_password";          // from InfinityFree
+$dbname = "your_db_name";                // the database you just created
 
-$host = 'Localhost';
-$dbname = 'internship_system';
-$username = 'root';
-$password = 'root';
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    // Set the PDO error mode to exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // Setting default fetch mode to associative array
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 ?>
